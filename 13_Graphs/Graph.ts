@@ -7,54 +7,54 @@
 
 // Undirected graph
 // Unweighted graph
-class Graph {
-  public adjacencyList: any;
+export class Graph {
+  public adjacencyList: any
   constructor() {
-    this.adjacencyList = {};
+    this.adjacencyList = {}
   }
 
   public addVertex(vertex: string): void {
     // TODO: Should check if the vertex already exists and return a warning | Error handling
-    if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
+    if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = []
   }
 
   public addEdge(vertex1: string, vertex2: string): void {
     // TODO Error handling
-    this.adjacencyList[vertex1].push(vertex2);
-    this.adjacencyList[vertex2].push(vertex1);
+    this.adjacencyList[vertex1].push(vertex2)
+    this.adjacencyList[vertex2].push(vertex1)
   }
 
   public removeEdge(vertex1: string, vertex2: string): void {
     // TODO Error handling
     this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(
-      (vertex: string): boolean => vertex !== vertex2
-    );
+      (vertex: string): boolean => vertex !== vertex2,
+    )
     this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(
-      (vertex: string): boolean => vertex !== vertex1
-    );
+      (vertex: string): boolean => vertex !== vertex1,
+    )
   }
 
   public removeVertex(vertex: string): void {
     this.adjacencyList[vertex].forEach((edge: string): void =>
       this.removeEdge(edge, vertex)
-    );
-    delete this.adjacencyList[vertex];
+    )
+    delete this.adjacencyList[vertex]
   }
 
   public depthFirstSearchRecursive(startingVertex = 'A'): string[] {
-    const result: string[] = [];
-    const visited: any = {};
+    const result: string[] = []
+    const visited: any = {}
 
     const DFSHelper = (vertex: string) => {
-      if (!vertex) return null;
-      visited[vertex] = true;
-      result.push(vertex);
+      if (!vertex) return null
+      visited[vertex] = true
+      result.push(vertex)
       this.adjacencyList[vertex].forEach((neighbor: string) =>
         !visited[neighbor] ? DFSHelper(neighbor) : undefined
-      );
-    };
-    DFSHelper(startingVertex);
-    return result;
+      )
+    }
+    DFSHelper(startingVertex)
+    return result
   }
 
   public depthFirstSearchIterative(startingVertex = 'A'): string[] {
@@ -68,8 +68,9 @@ class Graph {
       if (currentVertex && !visited[currentVertex]) {
         result.push(currentVertex)
         visited[currentVertex] = true
-        this.adjacencyList[currentVertex].forEach((neighbor: string): number => stack.push(neighbor)
-        );
+        this.adjacencyList[currentVertex].forEach((neighbor: string): number =>
+          stack.push(neighbor)
+        )
       }
     }
     return result
@@ -91,8 +92,7 @@ class Graph {
             queue.push(neighbor)
             visited[neighbor] = true
           }
-        }
-        );
+        })
       }
     }
     return result
@@ -121,26 +121,21 @@ class Graph {
 // console.log(graph.depthFirstSearchIterative('A'));
 // console.log(graph.breadthFirstSearch('A'));
 
+/** */
 
-/**
- * 
- * 
- *  
-*/
+import { PriorityQueue } from '../11_Binary_Heaps/PriorityQueue.ts'
 
-import { PriorityQueue } from "../11_Binary_Heaps/PriorityQueue.ts";
-
-class WeightedGraph {
-  public adjacencyList: any;
+export class WeightedGraph {
+  public adjacencyList: any
   constructor() {
-    this.adjacencyList = {};
+    this.adjacencyList = {}
   }
   public addVertex(vertex: string) {
     if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = []
   }
   public addEdge(vertex1: string, vertex2: string, weight: number) {
-    this.adjacencyList[vertex1].push({ node: vertex2, weight });
-    this.adjacencyList[vertex2].push({ node: vertex1, weight });
+    this.adjacencyList[vertex1].push({ node: vertex2, weight })
+    this.adjacencyList[vertex2].push({ node: vertex1, weight })
   }
   public shortestPath(start: string, finish: string) {
     // Initialization: creating a priority queue, a previous object (to trace the path)
@@ -180,7 +175,7 @@ class WeightedGraph {
             const nextNode = this.adjacencyList[smallest][neighbor]
             // Calculate the new distance to neighboring node
             const candidate = distances[smallest] + nextNode.weight
-            const nextNeighbor = nextNode.node;
+            const nextNeighbor = nextNode.node
             if (candidate < distances[nextNeighbor]) {
               // updating the new smallest distance to neighbor
               distances[nextNeighbor] = candidate
@@ -215,20 +210,20 @@ class WeightedGraph {
 // }
 
 const weightedGraph = new WeightedGraph()
-weightedGraph.addVertex("A")
-weightedGraph.addVertex("B")
-weightedGraph.addVertex("C")
-weightedGraph.addVertex("D")
-weightedGraph.addVertex("E")
-weightedGraph.addVertex("F")
-weightedGraph.addEdge("A", "B", 4)
-weightedGraph.addEdge("A", "C", 2)
-weightedGraph.addEdge("B", "E", 3)
-weightedGraph.addEdge("C", "D", 2)
-weightedGraph.addEdge("C", "F", 4)
-weightedGraph.addEdge("D", "F", 1)
-weightedGraph.addEdge("D", "E", 3)
-weightedGraph.addEdge("F", "E", 1)
+weightedGraph.addVertex('A')
+weightedGraph.addVertex('B')
+weightedGraph.addVertex('C')
+weightedGraph.addVertex('D')
+weightedGraph.addVertex('E')
+weightedGraph.addVertex('F')
+weightedGraph.addEdge('A', 'B', 4)
+weightedGraph.addEdge('A', 'C', 2)
+weightedGraph.addEdge('B', 'E', 3)
+weightedGraph.addEdge('C', 'D', 2)
+weightedGraph.addEdge('C', 'F', 4)
+weightedGraph.addEdge('D', 'F', 1)
+weightedGraph.addEdge('D', 'E', 3)
+weightedGraph.addEdge('F', 'E', 1)
 
 console.log(weightedGraph.adjacencyList)
 // this.adjacencyList {
@@ -240,5 +235,5 @@ console.log(weightedGraph.adjacencyList)
 // F: [ { node: "C", weight: 4 }, { node: "D", weight: 1 }, { node: "E", weight: 1 } ]
 // }
 
-console.log(weightedGraph.shortestPath("A", "E"))
+console.log(weightedGraph.shortestPath('A', 'E'))
 // [ "A", "C", "D", "F", "E" ]

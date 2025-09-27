@@ -15,7 +15,8 @@ function historicalSwap(arr, index1, index2) {
 function bubbleSort(arr) {
   // Swapping logique
   // Just numerical comparaison here
-  const swap = (arr, index1, index2) => [arr[index1], arr[index2]] = [arr[index2], arr[index1]]
+  const swap = (arr, index1, index2) =>
+    [arr[index1], arr[index2]] = [arr[index2], arr[index1]]
   // Short-circuit variable to exit the loop in case no swaps have been made
   // which means the array is sorted
   let noSwaps = false

@@ -1,10 +1,8 @@
-
-
-
 function selectionSort(arr) {
   // Swapping logique
   // Just numerical comparaison here
-  const swap = (arr, index1, index2) => [arr[index1], arr[index2]] = [arr[index2], arr[index1]]
+  const swap = (arr, index1, index2) =>
+    [arr[index1], arr[index2]] = [arr[index2], arr[index1]]
 
   for (let i = 0; i < arr.length; i++) {
     let minimum = i
@@ -14,7 +12,6 @@ function selectionSort(arr) {
     // Small improvement to cover the case when i is already the minimum
     // In which case, there is no need to swap
     if (i !== minimum) swap(arr, i, minimum)
-
   }
   return arr
 }

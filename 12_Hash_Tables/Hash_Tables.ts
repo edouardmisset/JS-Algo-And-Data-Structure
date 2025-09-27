@@ -5,11 +5,11 @@ function hash(key: string, size: number): number {
     .reduce(
       (acc: number, char: string): number =>
         (acc + char.toLowerCase().charCodeAt(0)) % size,
-      0
-    );
+      0,
+    )
 }
 
-hash('blue', 10);
+hash('blue', 10)
 
 // Simple hash function for string
 // ! Constant time-ish
@@ -17,17 +17,17 @@ hash('blue', 10);
 // size should be a prime number
 // Introduce a prime number as a coefficient
 function hash2(key: string, size: number): number {
-  let total = 0;
-  const WEIRD_PRIME = 31;
+  let total = 0
+  const WEIRD_PRIME = 31
   for (let index = 0; index < Math.min(key.length, 100); index++) {
-    const char = key[index];
-    const value = char.charCodeAt(0) - 96;
-    total = (total * WEIRD_PRIME + value) % size;
+    const char = key[index]
+    const value = char.charCodeAt(0) - 96
+    total = (total * WEIRD_PRIME + value) % size
   }
-  return total;
+  return total
 }
 
-hash2('blue', 111);
+hash2('blue', 111)
 
 // Collisions
 // 2 Strategies:
@@ -39,25 +39,25 @@ hash2('blue', 111);
 // This allows us to  store a single key-value pair for each index.
 
 class HashTable {
-  public keyMap;
+  public keyMap
   constructor(public size = 53) {
-    this.keyMap = Array.from({ length: size }, (_x: any): any => []);
+    this.keyMap = Array.from({ length: size }, (_x: any): any => [])
   }
 
   private _hash(key: string): number {
-    let total = 0;
-    const WEIRD_PRIME = 31;
+    let total = 0
+    const WEIRD_PRIME = 31
     for (let index = 0; index < Math.min(key.length, 100); index++) {
-      const char = key[index];
-      const value = char.toLowerCase().charCodeAt(0) - 96;
-      total = (total * WEIRD_PRIME + value) % this.size;
+      const char = key[index]
+      const value = char.toLowerCase().charCodeAt(0) - 96
+      total = (total * WEIRD_PRIME + value) % this.size
     }
-    return total;
+    return total
   }
 
   public set(key: string, value: string) {
-    const index = this._hash(key);
-    this.keyMap[index].push([key, value]);
+    const index = this._hash(key)
+    this.keyMap[index].push([key, value])
     return index
   }
 
@@ -65,21 +65,27 @@ class HashTable {
     const index = this._hash(key)
     if (this.keyMap[index] && this.keyMap[index].length > 0) {
       const keyValuePairs = this.keyMap[index]
-      return keyValuePairs.filter((keyValue: [string, string]) => keyValue[0] === key)[0][1]
+      return keyValuePairs.filter((keyValue: [string, string]) =>
+        keyValue[0] === key
+      )[0][1]
     }
     return undefined
   }
 
   public keys() {
-    return Array.from(new Set(
-      this.keyMap.flat(1).map((keyValue: [string, string]) => keyValue[0])
-    ))
+    return Array.from(
+      new Set(
+        this.keyMap.flat(1).map((keyValue: [string, string]) => keyValue[0]),
+      ),
+    )
   }
 
   public values() {
-    return Array.from(new Set(
-      this.keyMap.flat(1).map((keyValue: [string, string]) => keyValue[1])
-    ))
+    return Array.from(
+      new Set(
+        this.keyMap.flat(1).map((keyValue: [string, string]) => keyValue[1]),
+      ),
+    )
   }
 }
 
@@ -88,7 +94,7 @@ class HashTable {
 // Deletion: O(1)
 // Access: O(1)
 
-const table = new HashTable(17);
+const table = new HashTable(17)
 
 table.set('hello world', 'goodbye')
 table.set('cats', 'dogs')

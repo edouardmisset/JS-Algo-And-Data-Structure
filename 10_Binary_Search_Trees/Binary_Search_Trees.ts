@@ -4,135 +4,135 @@
 */
 
 export class TreeNode {
-  public value: number;
-  public right: TreeNode | null;
-  public left: TreeNode | null;
+  public value: number
+  public right: TreeNode | null
+  public left: TreeNode | null
 
   constructor(value: number) {
-    this.value = value;
-    this.right = null;
-    this.left = null;
+    this.value = value
+    this.right = null
+    this.left = null
   }
 }
 
 export class BinarySearchTree {
-  public root: TreeNode | null;
+  public root: TreeNode | null
   constructor() {
-    this.root = null;
+    this.root = null
   }
 
   insert(value: number): this | undefined {
-    const newNode = new TreeNode(value);
+    const newNode = new TreeNode(value)
     if (!this.root) {
-      this.root = newNode;
-      return this;
+      this.root = newNode
+      return this
     }
-    let currentNode = this.root;
+    let currentNode = this.root
     while (true) {
-      if (value === currentNode.value) return undefined;
+      if (value === currentNode.value) return undefined
       if (value > currentNode.value) {
         if (!currentNode.right) {
-          currentNode.right = newNode;
-          return this;
+          currentNode.right = newNode
+          return this
         }
-        currentNode = currentNode.right;
+        currentNode = currentNode.right
       } else {
         if (!currentNode.left) {
-          currentNode.left = newNode;
-          return this;
+          currentNode.left = newNode
+          return this
         }
-        currentNode = currentNode.left;
+        currentNode = currentNode.left
       }
     }
   }
 
   find(value: number): TreeNode | undefined | null {
-    if (!this.root) return undefined;
+    if (!this.root) return undefined
 
-    let currentNode: TreeNode | null = this.root;
-    let found = false;
+    let currentNode: TreeNode | null = this.root
+    let found = false
     while (currentNode && !found) {
       if (value > currentNode.value) {
-        currentNode = currentNode.right;
+        currentNode = currentNode.right
       } else if (value < currentNode.value) {
-        currentNode = currentNode.left;
+        currentNode = currentNode.left
       } else {
-        found = true;
+        found = true
       }
     }
-    return found ? currentNode : undefined;
+    return found ? currentNode : undefined
   }
 
   contains(value: number): boolean {
-    return !!this.find(value);
+    return !!this.find(value)
   }
 
   // ! Traversal
 
   // Breadth-First Search
   BFS(): number[] {
-    let node: undefined | TreeNode | null = this.root;
-    const data: number[] = [];
-    const queue: (TreeNode | null)[] = [];
-    queue.push(node);
+    let node: undefined | TreeNode | null = this.root
+    const data: number[] = []
+    const queue: (TreeNode | null)[] = []
+    queue.push(node)
     while (queue.length) {
-      node = queue.shift();
+      node = queue.shift()
       if (node) {
-        data.push(node.value);
-        if (node.left) queue.push(node.left);
-        if (node.right) queue.push(node.right);
+        data.push(node.value)
+        if (node.left) queue.push(node.left)
+        if (node.right) queue.push(node.right)
       }
     }
-    return data;
+    return data
   }
 
   // Depth-First Search
   DFSPreOrder(): number[] {
-    const data: number[] = [];
+    const data: number[] = []
 
-    function traverse(node: TreeNode) {
-      data.push(node.value);
-      if (node?.left) traverse(node.left);
-      if (node?.right) traverse(node.right);
+    function traverse(node: TreeNode): void {
+      data.push(node.value)
+      if (node?.left) traverse(node.left)
+      if (node?.right) traverse(node.right)
     }
 
-    if (this.root) traverse(this.root);
-    return data;
+    if (this.root) traverse(this.root)
+    return data
   }
 
   DFSPostOrder(): number[] {
-    const data: number[] = [];
+    const data: number[] = []
 
-    function traverse(node: TreeNode) {
-      if (node?.left) traverse(node.left);
-      if (node?.right) traverse(node.right);
-      data.push(node.value);
+    function traverse(node: TreeNode): void {
+      if (node?.left) traverse(node.left)
+      if (node?.right) traverse(node.right)
+      data.push(node.value)
     }
 
-    if (this.root) traverse(this.root);
-    return data;
+    if (this.root) traverse(this.root)
+    return data
   }
 
   DFSInOrder(): number[] {
-    const data: number[] = [];
+    const data: number[] = []
 
-    function traverse(node: TreeNode) {
-      node?.left && traverse(node.left);
-      data.push(node.value);
-      node?.right && traverse(node.right);
+    function traverse(node: TreeNode): void {
+      if (node?.left) traverse(node.left)
+      data.push(node.value)
+      if (node?.right) traverse(node.right)
     }
 
-    if (this.root) traverse(this.root);
-    return data;
+    if (this.root) traverse(this.root)
+    return data
   }
 
   isBalanced(): boolean {
-    if (!this.root) return true;
+    if (!this.root) return true
 
     function checkHeight(node: TreeNode | null): boolean | number {
-      if (!node) return 0;
-      const left = checkHeight(node.left);
-      const right = checkHeight(node.right);
+      if (!node) return 0
+      const left = checkHeight(node.left)
+      const right = checkHeight(node.right)
       // if a previous call has returned false,
       // we need to pass false all the way up
       if (
@@ -140,27 +140,24 @@ export class BinarySearchTree {
         right === false ||
         Math.abs(Number(left) - Number(right)) > 1
       ) {
-        return false;
+        return false
       }
       // height of a node
-      return Math.max(Number(left), Number(right)) + 1;
+      return Math.max(Number(left), Number(right)) + 1
     }
 
-    return checkHeight(this.root) !== false;
+    return checkHeight(this.root) !== false
   }
-
-  
-
 }
 
 // Time Complexity:
 // Insertion: O(log N)
 // Searching: O(log N)
 
-const tree = new BinarySearchTree();
-tree.root = new TreeNode(10);
-tree.root.right = new TreeNode(15);
-tree.root.left = new TreeNode(5);
-tree.root.left.right = new TreeNode(9);
+const tree = new BinarySearchTree()
+tree.root = new TreeNode(10)
+tree.root.right = new TreeNode(15)
+tree.root.left = new TreeNode(5)
+tree.root.left.right = new TreeNode(9)
 
-console.log(tree);
+console.log(tree)

@@ -1,0 +1,57 @@
+{
+  "tasks": {
+    "lint": "deno lint",
+    "format": "deno fmt",
+    "check": "deno task lint && deno task format && deno check"
+  },
+  "imports": {
+    "@std/assert": "jsr:@std/assert@^1.0.14"
+  },
+  "compilerOptions": {
+    "strict": true,
+    "exactOptionalPropertyTypes": true,
+    "useUnknownInCatchVariables": true,
+    "noImplicitOverride": true
+  },
+  "exclude": [
+    ".git",
+    "coverage"
+  ],
+  "lint": {
+    "rules": {
+      "tags": [
+        "recommended"
+      ],
+      "include": [
+        "camelcase",
+        "default-param-last",
+        "eqeqeq",
+        "explicit-function-return-type",
+        "explicit-module-boundary-types",
+        "no-const-assign",
+        "no-eval",
+        "no-implicit-declare-namespace-export",
+        "no-non-null-asserted-optional-chain",
+        "no-non-null-assertion",
+        "no-self-compare",
+        "no-sync-fn-in-async-fn",
+        "no-console",
+        "single-var-declarator"
+      ]
+    },
+    "include": [
+      "."
+    ]
+  },
+  "fmt": {
+    "useTabs": false,
+    "lineWidth": 80,
+    "indentWidth": 2,
+    "semiColons": false,
+    "singleQuote": true,
+    "include": [
+      "."
+    ],
+    "proseWrap": "always"
+  }
+}

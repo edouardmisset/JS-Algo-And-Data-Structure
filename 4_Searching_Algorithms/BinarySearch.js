@@ -1,6 +1,6 @@
 function binarySearch(sortedArray, value) {
-  let start = 0;
-  let end = sortedArray.length - 1;
+  let start = 0
+  let end = sortedArray.length - 1
   let middle = Math.floor((start + end) / 2)
   while (sortedArray[middle] !== value && start <= end) {
     if (sortedArray[middle] < value) start = middle + 1

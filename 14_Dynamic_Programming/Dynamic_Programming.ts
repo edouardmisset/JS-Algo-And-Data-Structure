@@ -29,7 +29,7 @@ function fibMemo(number: number, memo: number[] = []): number {
 }
 // Time Complexity O(n) | Space Complexity: O(n)
 
-console.log(fibMemo(9));
+console.log(fibMemo(9))
 
 // Fibonacci with Memoization no recursion
 // Tabulated Version (bottom up)
@@ -43,6 +43,6 @@ function fib(number: number): number {
 }
 // Time Complexity O(n) | Space Complexity: O(n)
 
-console.log(fib(9));
+console.log(fib(9))
 
-// 
+//

@@ -1,6 +1,6 @@
 // ! FIFO: First In First Out
 
-import { ListNode, value } from '../7_Singly_Linked_Lists/SinglyLinkedLists.ts'
+import { ListNode, Value } from '../7_Singly_Linked_Lists/SinglyLinkedLists.ts'
 
 // Using an array
 const q = []
@@ -25,16 +25,16 @@ console.log(q2)
 // Creating our own class
 
 class Queue {
-  public first: ListNode | null;
-  public last: ListNode | null;
-  public size: number;
+  public first: ListNode | null
+  public last: ListNode | null
+  public size: number
   constructor() {
     this.first = null
     this.last = null
     this.size = 0
   }
 
-  enqueue(value: value): number {
+  enqueue(value: Value): number {
     const newNode = new ListNode(value)
     if (this.first && this.last) {
       this.last.next = newNode
@@ -45,17 +45,17 @@ class Queue {
     return ++this.size
   }
 
-  dequeue(): value | undefined {
+  dequeue(): Value | undefined {
     if (!this.first) return undefined
 
     const removedNode = this.first
     if (this.first === this.last) this.last = null
-    if (removedNode) {
-      this.first = removedNode.next
-      removedNode.next = null
-      this.size--
-      return removedNode.value
-    }
+    if (!removedNode) return
+
+    this.first = removedNode.next
+    removedNode.next = null
+    this.size--
+    return removedNode.value
   }
 }
 

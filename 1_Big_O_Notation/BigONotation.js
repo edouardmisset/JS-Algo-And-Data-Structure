@@ -13,7 +13,7 @@
  * Smaller terms don’t matter
  */
 
-const sumUpTo = number => {
+const sumUpTo = (number) => {
   let total = 0
   for (let index = 0; index <= number; index++) {
     total += index
@@ -22,7 +22,7 @@ const sumUpTo = number => {
 }
 // O(n)
 
-const sumUpTo2 = number => (number * (number + 1)) / 2
+const sumUpTo2 = (number) => (number * (number + 1)) / 2
 // O(1)
 
 const sumUpTo3 = function add(number) {
@@ -35,7 +35,7 @@ const codeTiming = (fct, argument) => {
   const result = fct(argument)
   const end = performance.now()
   console.log(
-    `The function ${fct.name} returned ${result} in ${end - start} ms`
+    `The function ${fct.name} returned ${result} in ${end - start} ms`,
   )
 }
 
@@ -43,14 +43,14 @@ codeTiming(sumUpTo, 1_000)
 codeTiming(sumUpTo2, 1_000)
 codeTiming(sumUpTo3, 1_000)
 
-const logAtLeast5 = num => {
+const logAtLeast5 = (num) => {
   for (let index = 0; index < Math.max(5, num); index++) {
     console.log(index)
   }
 }
 // O(n)
 
-const logAtMost5 = num => {
+const logAtMost5 = (num) => {
   for (let index = 0; index < Math.min(5, num); index++) {
     console.log(index)
   }
@@ -72,7 +72,7 @@ const logAtMost5 = num => {
  * Smaller terms don’t matter
  */
 
-const sum = array => {
+const sum = (array) => {
   let total = 0
   for (let index = 0; index < array.length; index++) {
     total += array[index]
@@ -81,7 +81,7 @@ const sum = array => {
 }
 // O(1)
 
-const double = array => {
+const double = (array) => {
   const doubled = []
   for (let index = 0; index < array.length; index++) {
     doubled.push(array[index] * 2)

@@ -2,39 +2,39 @@
 
 // Using an array as a stack (using push and pop or shift and unshift)
 
-import { ListNode, value } from '../7_Singly_Linked_Lists/SinglyLinkedLists.ts'
+import { ListNode, Value } from '../7_Singly_Linked_Lists/SinglyLinkedLists.ts'
 
 // Creating our own Stack
 class Stack {
-  public first: ListNode | null;
-  public last: ListNode | null;
-  public size: number;
+  public first: ListNode | null
+  public last: ListNode | null
+  public size: number
   constructor() {
     this.first = null
     this.last = null
     this.size = 0
   }
 
-  push(value: value): number {
-    const newNode = new ListNode(value);
+  push(value: Value): number {
+    const newNode = new ListNode(value)
     if (this.first) {
-      newNode.next = this.first;
+      newNode.next = this.first
     } else {
-      this.last = newNode;
+      this.last = newNode
     }
-    this.first = newNode;
-    return ++this.size;
+    this.first = newNode
+    return ++this.size
   }
 
-  pop(): value | undefined {
-    if (!this.first) return undefined;
-    const removedNode = this.first;
-    if (this.first === this.last) this.last = null;
-    const newFirst = this.first.next;
-    removedNode.next = null;
-    this.first = newFirst;
-    this.size--;
-    return removedNode.value;
+  pop(): Value | undefined {
+    if (!this.first) return undefined
+    const removedNode = this.first
+    if (this.first === this.last) this.last = null
+    const newFirst = this.first.next
+    removedNode.next = null
+    this.first = newFirst
+    this.size--
+    return removedNode.value
   }
 }
 

@@ -3,7 +3,7 @@
 validAnagram('', '') // true
 validAnagram('aaz', 'zza') // false
 validAnagram('anagram', 'nagaram') // true
-validAnagram("rat", "car") // false
+validAnagram('rat', 'car') // false
 validAnagram('awesome', 'awesom') // false
 validAnagram('qwerty', 'qeywrt') // true
 validAnagram('texttwisttime', 'timetwisttext') // true
@@ -15,7 +15,10 @@ function validAnagram(str1, str2) {
   const frequencyCounter1 = frequencyCounter(str1)
   const frequencyCounter2 = frequencyCounter(str2)
   for (let key in frequencyCounter1) {
-    if (!((key in frequencyCounter2) && frequencyCounter1[key] === frequencyCounter2[key])) {
+    if (
+      !((key in frequencyCounter2) &&
+        frequencyCounter1[key] === frequencyCounter2[key])
+    ) {
       return false
     }
   }

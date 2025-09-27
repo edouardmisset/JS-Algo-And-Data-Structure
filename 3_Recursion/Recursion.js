@@ -49,9 +49,9 @@ function collectOddValues(arr) {
     if (nums.length === 0) return
     const [first, ...rest] = nums
     if (first % 2 !== 0) {
-      result.push(first);
+      result.push(first)
     }
-    helper(rest);
+    helper(rest)
   }
   helper(arr)
   return result
@@ -65,7 +65,7 @@ function collectOddValues2(arr) {
   if (first % 2 !== 0) {
     newArr.push(first)
   }
-  return [...newArr, ...collectOddValues2(rest)];
+  return [...newArr, ...collectOddValues2(rest)]
 }
 
 console.log(collectOddValues([1, 2, 3, 4, 5, 6]))

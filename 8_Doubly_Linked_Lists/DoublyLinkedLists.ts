@@ -1,13 +1,13 @@
 import { ListNode, value } from '../7_Singly_Linked_Lists/SinglyLinkedLists.ts'
 
 class DoublyLinkedList {
-  public head: ListNode | null;
-  public tail: ListNode | null;
-  public length: number;
+  public head: ListNode | null
+  public tail: ListNode | null
+  public length: number
   constructor() {
-    this.head = null;
-    this.tail = null;
-    this.length = 0;
+    this.head = null
+    this.tail = null
+    this.length = 0
   }
 
   push(value: value): this {
@@ -37,7 +37,7 @@ class DoublyLinkedList {
         oldTail.previous = null
       }
       this.length--
-      return oldTail === null ? undefined : oldTail;
+      return oldTail === null ? undefined : oldTail
     }
   }
 
@@ -74,7 +74,7 @@ class DoublyLinkedList {
     if (index < 0 || index >= this.length) return undefined
 
     let currentNode = this.head
-    let count = 0;
+    let count = 0
     // Starting from the head
     if (index < this.length / 2) {
       while (index < this.length / 2) {
@@ -103,29 +103,29 @@ class DoublyLinkedList {
   }
 
   insert(value: value, index: number): boolean {
-    if (index < 0 || index > this.length) return false;
+    if (index < 0 || index > this.length) return false
     if (index === 0) return !!this.unshift(value)
     if (index === this.length) return !!this.push(value)
 
-    const newNode = new ListNode(value);
-    const previousNode = this.get(index - 1);
+    const newNode = new ListNode(value)
+    const previousNode = this.get(index - 1)
     if (previousNode) {
-      const nextNode = previousNode.next;
+      const nextNode = previousNode.next
 
       if (nextNode) nextNode.previous = newNode
-      previousNode.next = newNode;
-      newNode.next = nextNode;
+      previousNode.next = newNode
+      newNode.next = nextNode
       newNode.previous = previousNode
     }
-    this.length++;
-    return true;
+    this.length++
+    return true
   }
 
   remove(index: number): ListNode | undefined | null {
-    // Edge cases : 
-    if (index < 0 || index > this.length) return undefined;
-    if (index === 0) return this.shift();
-    if (index === this.length - 1) return this.pop();
+    // Edge cases :
+    if (index < 0 || index > this.length) return undefined
+    if (index === 0) return this.shift()
+    if (index === this.length - 1) return this.pop()
 
     const nodeToRemove = this.get(index)
     if (nodeToRemove) {
@@ -156,7 +156,6 @@ class DoublyLinkedList {
     }
     return this
   }
-
 }
 
 // Time Complexity:

@@ -22,9 +22,8 @@ const productOfArray = (arr) => {
 
 console.log(productOfArray([1, 2, 3, 10]))
 
-
 // recursiveRange(6) // 21
-// recursiveRange(10) // 55 
+// recursiveRange(10) // 55
 function recursiveRange(number) {
   if (number === 0) {
     return number
