@@ -1,12 +1,17 @@
-// Adjacency List
-// {
-//   "a": ["b", "c"],
-//   "b": ["a", "c"],
-//   "c": ["a", "b"]
-// }
+import { PriorityQueue } from '../11_Binary_Heaps/PriorityQueue.ts'
 
-// Undirected graph
-// Unweighted graph
+/** Graph
+ * Undirected graph
+ * Unweighted graph
+ *
+ * Example:
+ * Adjacency List
+ * const graph = {
+ *   "a": ["b", "c"],
+ *   "b": ["a", "c"],
+ *   "c": ["a", "b"]
+ * }
+ */
 export class Graph {
   public adjacencyList: any
   constructor() {
@@ -122,8 +127,6 @@ export class Graph {
 // console.log(graph.breadthFirstSearch('A'));
 
 /** */
-
-import { PriorityQueue } from '../11_Binary_Heaps/PriorityQueue.ts'
 
 export class WeightedGraph {
   public adjacencyList: any

@@ -1,16 +1,19 @@
-// ! Binary Heap:
-// Binary Heaps are trees.
-// A binary heap is as compact as possible.
-// All the children of each node are as full as they can be and left children are filled out first.
-// Binary Heaps are used to implement Priority Queues.
-// Heaps are also often used with graph traversal algorithms.
+/** Binary Heap
+ * Binary Heaps are trees.
+ * A binary heap is as compact as possible.
+ * All the children of each node are as full as they can be and left children are filled out first.
+ * Binary Heaps are used to implement Priority Queues.
+ * Heaps are also often used with graph traversal algorithms.
+ */
 
-// ! Max Binary Heap:
-// Parents nodes are always larger than child nodes
-// Each parent has at most 2 children
+/** Max Binary Heap
+ * Parents nodes are always larger than child nodes
+ * Each parent has at most 2 children
+ */
 
-// ! Min Binary Heap:
-// Parents nodes are always smaller than child nodes
+/** Min Binary Heap
+ * Parents nodes are always smaller than child nodes
+ */
 
 class MaxBinaryHeap {
   public values: number[]

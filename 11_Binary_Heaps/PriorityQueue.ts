@@ -1,16 +1,25 @@
-// ! Binary Heap:
-// Binary Heaps are trees.
-// A binary heap is as compact as possible.
-// All the children of each node are as full as they can be and left children are filled out first.
-// Binary Heaps are used to implement Priority Queues.
-// Heaps are also often used with graph traversal algorithms.
+/** Binary Heap
+ * Binary Heaps are trees.
+ * A binary heap is as compact as possible.
+ * All the children of each node are as full as they can be and left children are filled out first.
+ * Binary Heaps are used to implement Priority Queues.
+ * Heaps are also often used with graph traversal algorithms.
+ */
 
-// ! Min Binary Heap:
-// Parents nodes are always smaller than child nodes
+/** Min Binary Heap
+ * Parents nodes are always smaller than child nodes
+ */
 
 class PrioNode {
-  constructor(public value: number | string = 0, public priority: number = 0) {}
+  constructor(public value: number | string = 0, public priority: number = 0) { }
 }
+
+/** 
+ * Time Complexity:
+ * Insertion: O(log N)
+ * Removal: O(log N)
+ * Searching: O(N)
+*/
 
 export class PriorityQueue {
   public values: PrioNode[]
@@ -95,11 +104,6 @@ export class PriorityQueue {
     }
   }
 }
-
-// Time Complexity:
-// Insertion: O(log N)
-// Removal: O(log N)
-// Searching: O(N)
 
 const prioQ = new PriorityQueue()
 prioQ.enqueue('common cold', 5)

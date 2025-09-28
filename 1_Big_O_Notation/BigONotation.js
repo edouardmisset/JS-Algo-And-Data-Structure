@@ -1,5 +1,7 @@
-//! Time Complexity
-/*
+/**
+ * Big O Notation
+ * Time Complexity
+ *
  * Constant —O(1)
  * Linear — O(n)
  * Logarithmic — O(log n)
@@ -59,7 +61,7 @@ const logAtMost5 = (num) => {
 
 //! Space Complexity
 /*
- * Constant —O(1)
+ * Constant — O(1)
  * Linear — O(n)
  * Logarithmic — O(log n)
  * Linearithmic — (n log n)
@@ -72,20 +74,37 @@ const logAtMost5 = (num) => {
  * Smaller terms don’t matter
  */
 
-const sum = (array) => {
+/**
+ * Sum the values in an array
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(1)
+ *
+ * @param {number[]} array - The array to sum
+ * @returns {number} - The sum of the array
+ */
+export const sum = (array) => {
   let total = 0
-  for (let index = 0; index < array.length; index++) {
-    total += array[index]
+  for (const num of array) {
+    total += num
   }
   return total
 }
-// O(1)
+// O(n)
 
-const double = (array) => {
+/**
+ * Double the values in an array
+ *
+ * Time complexity: O(n)
+ * Space complexity: O(n)
+ *
+ * @param {number[]} array - The array to double
+ * @returns {number[]} - The doubled array
+ */
+export const double = (array) => {
   const doubled = []
-  for (let index = 0; index < array.length; index++) {
-    doubled.push(array[index] * 2)
+  for (const num of array) {
+    doubled.push(num * 2)
   }
   return doubled
 }
-// O(n)

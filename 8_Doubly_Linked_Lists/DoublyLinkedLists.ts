@@ -1,4 +1,4 @@
-import { ListNode, value } from '../7_Singly_Linked_Lists/SinglyLinkedLists.ts'
+import { ListNode, Value } from '../7_Singly_Linked_Lists/SinglyLinkedLists.ts'
 
 class DoublyLinkedList {
   public head: ListNode | null
@@ -10,7 +10,7 @@ class DoublyLinkedList {
     this.length = 0
   }
 
-  push(value: value): this {
+  push(value: Value): this {
     const newTail = new ListNode(value)
     if (this.tail) {
       this.tail.next = newTail
@@ -57,7 +57,7 @@ class DoublyLinkedList {
     return oldHead
   }
 
-  unshift(value: value): this {
+  unshift(value: Value): this {
     const newNode = new ListNode(value)
     if (this.head) {
       this.head.previous = newNode
@@ -93,7 +93,7 @@ class DoublyLinkedList {
     return currentNode
   }
 
-  set(value: value, index: number): boolean {
+  set(value: Value, index: number): boolean {
     const foundNode = this.get(index)
     if (foundNode) {
       foundNode.value = value
@@ -102,7 +102,7 @@ class DoublyLinkedList {
     return false
   }
 
-  insert(value: value, index: number): boolean {
+  insert(value: Value, index: number): boolean {
     if (index < 0 || index > this.length) return false
     if (index === 0) return !!this.unshift(value)
     if (index === this.length) return !!this.push(value)

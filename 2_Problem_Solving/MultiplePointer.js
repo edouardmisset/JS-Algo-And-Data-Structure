@@ -1,4 +1,5 @@
-// Implement a function called countUniqueValues, which accepts a sorted array, and counts the unique values in the array.
+// Implement a function called countUniqueValues, which accepts a sorted array,
+// and counts the unique values in the array. 
 // There can be negative numbers in the array, but it will always be sorted.
 
 function countUniqueValues(sortedArray) {
@@ -6,10 +7,10 @@ function countUniqueValues(sortedArray) {
   let uniqueValues = 1
   let i = 0
   for (let j = 1; j < sortedArray.length; j++) {
-    if (sortedArray[i] !== sortedArray[j]) {
-      uniqueValues++
-      i = j
-    }
+    if (sortedArray[i] === sortedArray[j]) continue
+
+    uniqueValues++
+    i = j
   }
   return uniqueValues
 }

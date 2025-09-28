@@ -1,4 +1,4 @@
-// Simple hash function for string
+/** Simple hash function for string */
 function hash(key: string, size: number): number {
   return key
     .split('')
@@ -11,11 +11,14 @@ function hash(key: string, size: number): number {
 
 hash('blue', 10)
 
-// Simple hash function for string
-// ! Constant time-ish
-// ! Better distribution
-// size should be a prime number
-// Introduce a prime number as a coefficient
+/** Simple hash function for string
+ *
+ * Time Complexity O(1)
+ *
+ * Better distribution
+ * Size should be a prime number
+ * Introduce a prime number as a coefficient
+ */
 function hash2(key: string, size: number): number {
   let total = 0
   const WEIRD_PRIME = 31
@@ -35,7 +38,7 @@ hash2('blue', 111)
 // Storing the data at the same spot but using a more sophisticated data structure (nested array, linked list, etc)
 // Storing multiple key-value pairs at the same index
 // ! Linear Probing
-// In the case of a collision, we search throu the array to find the next empty slot.
+// In the case of a collision, we search through the array to find the next empty slot.
 // This allows us to  store a single key-value pair for each index.
 
 class HashTable {
